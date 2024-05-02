@@ -113,3 +113,27 @@ Can contain simple text, HTML, CSS, JavaScript, and PHP Code.
 
 </html>
 ```
+
+## Variables and Data Types
+
+**Rules for PHP variables:**  
+`A variable name`
+
+- must starts with the $ sign, followed by the name of the variable
+- must start with a letter or the underscore character
+- cannot start with a number
+- can only contain alpha-numeric characters and underscores (A-z, 0-9, and \_ )
+  > Variable names are case-sensitive ($age and $AGE are two different variables)
+
+> PHP is loosly typed language. However, In PHP 7, type declarations were added. This gives an option to specify the data type expected when declaring a function, and by enabling the strict requirement, it will throw a "Fatal Error" on a type mismatch.
+
+**Data Types in PHP**
+
+- String
+- Integer
+- Float (floating point numbers - also called double)
+- Boolean
+- Array
+- Object
+- NULL
+- Resource
