@@ -46,6 +46,10 @@
     lines
     */
     echo "Hello World using PHP!";
+    echo "<br />";
+    $var = ["key1" => "apple", "banana", "cherry"];
+    $var2 = NULL;
+    var_dump($var2);
     ?>
     <div id="activate-js"></div>
     <button onclick="activateJS()">Activate JS</button>
