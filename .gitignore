@@ -1,0 +1,3 @@
+# Ignoring test files that I don't want to commit
+_*/
+_*
