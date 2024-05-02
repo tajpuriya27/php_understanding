@@ -9,6 +9,7 @@ Git repository that contains all the php code that I created to understand and i
 - **PHP Tag**: A PHP script starts with `<?php` and ends with `?>`
 - **Semi-colon**: PHP statement must ends with `;`. Semi-colon are error prone.
 - **Loosly Typed Language**: PHP is loosly typed language i.e. we don't have to declare the data type of varible while declaring them. _(Same as JS)_
+- **Omit Closing Tag**: The `?>` closing tag in PHP is optional and is often omitted in files containing only PHP code. This practice prevents accidental injection of trailing whitespace into the response.
 
 ## How to run PHP Code:
 
@@ -129,6 +130,19 @@ Can contain simple text, HTML, CSS, JavaScript, and PHP Code.
 
 We can assign same value to multiple variable:
 `$var1 = $var2 = $var3 = "common value";`
+
+**[Varible Scope](./var_scope.php)**  
+PHP has three different variable scopes:
+
+1. local
+2. global
+3. static
+
+- The `global` keyword is used to access a global variable from within a function.
+- PHP also stores all global variables in an array called `$GLOBALS[index]`. The _index_ holds the name of the variable. This array is also accessible from within functions and can be used to update global variables directly.
+- In case of `Static` variable, each time the function is called, that variable will still have the information it contained from the last time the function was called.
+
+- > Note: The variable is still local to the function.
 
 **Data Types in PHP**
 
