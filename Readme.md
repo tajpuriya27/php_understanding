@@ -222,3 +222,38 @@ There are three main numeric types `with related func` in PHP:
 $var = "123";
 is_numeric($var); // check whether the parameter is numeric
 ```
+
+## PHP String
+
+**Difference between "double quote" & 'single quote'**
+
+> Double quote are like template literal(`) in JS; variables are replaced.  
+> Single quote are like double quote in JS; no variables are replaced.
+
+**Inbuilt function for PHP String**
+
+- **strlen**  
+  return: length of string in int data type  
+  parameter: `string` || `int` data type variable
+
+- **str_word_count**  
+  return: number of words in int data type  
+  parameter: `string` data type variable
+
+- **strpos(2)**  
+  return: `character position` of the first match if found and `false` if no match is found  
+  parameter(2):
+
+  1. `string` where you want to search
+  2. `string` what you want to search
+
+  ```php
+  $var1 = "Hello I am Learning PHP";
+  echo strpos($var1, "PHP"); //20
+  echo "<br>";
+  echo strpos($var1, "zzz"); // false
+  /*
+    last echo doesn't display anything. This is because echo outputs one or more strings, and false is not a string.
+    When false is converted to a string, it becomes an empty string, which is why nothing is displayed.
+  */
+  ```
