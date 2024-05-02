@@ -192,3 +192,33 @@ Casting in PHP is done with these statements:
   parameter: Single parameter to display in screen
   - can be used with or without parentheses: `print` or `print()`
   - same as `echo` but slower
+
+## PHP Numbers
+
+There are three main numeric types `with related func` in PHP:
+
+- Integer `is_int()`
+- Float `is_float()`
+- Number Strings `is_numeric()`
+
+  ```php
+  $a = 5;
+  $b = 5.34;
+  $c = "25";
+  var_dump($a); //Integer
+  var_dump($b); // Float
+  var_dump($c); // String
+  var_dump(is_numeric($c)); //Prints true
+  ```
+
+  In addition, PHP has two more data types used for numbers:
+
+- Infinity `is_finite() && is_infinite()`
+- NaN `is_nan()`
+
+**Inbuilt function for PHP Numbers**
+
+```php
+$var = "123";
+is_numeric($var); // check whether the parameter is numeric
+```
