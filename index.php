@@ -50,6 +50,11 @@
     $var = ["key1" => "apple", "banana", "cherry"];
     $var2 = NULL;
     var_dump($var2);
+    echo "<br />";
+
+    $file = fopen("test.txt", "r");
+    var_dump($file);
+    fclose($file);
     ?>
     <div id="activate-js"></div>
     <button onclick="activateJS()">Activate JS</button>
