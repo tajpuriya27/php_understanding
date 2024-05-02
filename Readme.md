@@ -157,6 +157,14 @@ PHP has three different variable scopes:
 
 ## Inbuilt Functions
 
+- **echo Statement**  
+  returns: no return value  
+  parameter: Anything that you want to display in screen
+
+  - can take multiple parameters
+  - can be used with or without parentheses: `echo` or `echo()`
+  - Same as print but marginally faster.
+
 - **var_dump()**  
   returns: data type and the value of variable  
   parameter: variable
