@@ -35,3 +35,7 @@ Hypertext PreProcessor(PHP) is server side scripting language i.e. it runs on se
 ```
 
 Run the local server environment and then visit `http://127.0.0.1` via browser
+
+**Understanding**
+
+> PHP is server scripting language, we write our index.php code and put it in server. Now, Apache server is serving us the file to our browser.
