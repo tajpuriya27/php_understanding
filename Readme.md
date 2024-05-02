@@ -127,6 +127,9 @@ Can contain simple text, HTML, CSS, JavaScript, and PHP Code.
 
 > PHP is loosly typed language. However, In PHP 7, type declarations were added. This gives an option to specify the data type expected when declaring a function, and by enabling the strict requirement, it will throw a "Fatal Error" on a type mismatch.
 
+We can assign same value to multiple variable:
+`$var1 = $var2 = $var3 = "common value";`
+
 **Data Types in PHP**
 
 - String
@@ -137,3 +140,9 @@ Can contain simple text, HTML, CSS, JavaScript, and PHP Code.
 - Object
 - NULL
 - Resource
+
+## Inbuilt Functions
+
+- **var_dump()**  
+  returns: data type and the value of variable  
+  parameter: variable
