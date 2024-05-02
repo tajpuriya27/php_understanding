@@ -2,6 +2,14 @@
 
 Git repository that contains all the php code that I created to understand and it's main branch will have refactor code for future reference.
 
+## PHP Highlights
+
+- **Case Sensitivity**: PHP is case insensitive for keywords, functions, class. However, it is _case sensitive_ for variables.
+- **Indentation**: PHP don't care about it until and unless code are wrapped by php tag.
+- **PHP Tag**: A PHP script starts with `<?php` and ends with `?>`
+- **Semi-colon**: PHP statement must ends with `;`. Semi-colon are error prone.
+- **Loosly Typed Language**: PHP is loosly typed language i.e. we don't have to declare the data type of varible while declaring them. _(Same as JS)_
+
 ## How to run PHP Code:
 
 Hypertext PreProcessor(PHP) is server side scripting language i.e. it runs on server. We need server(Apache is popularly used) and PHP itself to run PHP code.
