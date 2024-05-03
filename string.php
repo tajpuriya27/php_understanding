@@ -10,5 +10,6 @@ echo strpos($var1, "zzz"); // false
 This is not displayed on screen. It is like hidden property of CSS
 */
 
+echo "False is not displayed on screen" . false;
 echo "<br>";
 var_dump(strpos($var1, "zzz")); // bool(false)
