@@ -225,6 +225,8 @@ is_numeric($var); // check whether the parameter is numeric
 
 ## PHP String
 
+**ESCAPE CHARACTER:** `\`
+
 **Difference between "double quote" & 'single quote'**
 
 > Double quote are like template literal(`) in JS; variables are replaced.  
@@ -307,11 +309,23 @@ echo "$var1 $var2"; // Using power of Double quote
 
   ```php
   $var = " Hello World! ";
-  echo trim($x); // "Hello World!"
-  echo $x; // " Hello World1 "
+  echo trim($var); // "Hello World!"
+  echo $var; // " Hello World1 "
   ```
 
 - **explode**  
   Convert string into an Array.  
   return: an array by spliting a given string  
   parameters: (seperator, string_to_split)
+
+- **substr**
+
+  ```php
+  $var = " Hello World! ";
+  echo substr($var, 6, 5); // "World"
+  echo substr($var, 6); // "World1"
+  # From end
+  echo substr($var, -6, 3); // "Wor"
+  # starting from index 5, and continue index -3 i.e. from end
+  echo substr($x, 6, -2); //Worl
+  ```
