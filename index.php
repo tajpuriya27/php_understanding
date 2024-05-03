@@ -57,6 +57,7 @@
     fclose($file);
     ?>
     <div id="activate-js"></div>
+    <a href="./php_oop.php">OOP Concept in PHP</a> <br />
     <button onclick="activateJS()">Activate JS</button>
     <script>
         function activateJS() {
