@@ -257,3 +257,18 @@ is_numeric($var); // check whether the parameter is numeric
     When false is converted to a string, it becomes an empty string, which is why nothing is displayed.
   */
   ```
+
+- **strtoupper**  
+  returns: String in upper case  
+  parameter: String to upper case
+
+  > It don't mutate the original variable
+
+  ```php
+  $strVar = "Hello I am Learning PHP in lower case";
+  echo strtoupper($strVar); // HELLO I AM LEARNING PHP IN LOWER CASE
+  echo "<br>";
+  echo "$strVar"; // Hello I am Learning PHP in lower case
+  ```
+
+- **strtolower**
