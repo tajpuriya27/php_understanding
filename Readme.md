@@ -230,7 +230,22 @@ is_numeric($var); // check whether the parameter is numeric
 > Double quote are like template literal(`) in JS; variables are replaced.  
 > Single quote are like double quote in JS; no variables are replaced.
 
+**Concatenate String**
+
+```php
+$var1 = "Hello";
+$var2 = "World";
+echo $var1 . " " . $var2;
+
+// Same as above
+$var1 = "Hello";
+$var2 = "World";
+echo "$var1 $var2"; // Using power of Double quote
+```
+
 **Inbuilt function for PHP String**
+
+> All below functions don't mutate the original variables(by default) unless it is mentioned.
 
 - **strlen**  
   return: length of string in int data type  
@@ -262,8 +277,6 @@ is_numeric($var); // check whether the parameter is numeric
   returns: String in upper case  
   parameter: String to upper case
 
-  > It don't mutate the original variable
-
   ```php
   $strVar = "Hello I am Learning PHP in lower case";
   echo strtoupper($strVar); // HELLO I AM LEARNING PHP IN LOWER CASE
@@ -272,3 +285,33 @@ is_numeric($var); // check whether the parameter is numeric
   ```
 
 - **strtolower**
+
+  > Opposite of `strtoupper()` function
+
+- **str_replace**
+
+  ```php
+  $phpvar = "Hello World!";
+  echo str_replace("World", "Team", $phpvar);
+  ```
+
+- **strrev**
+
+  ```php
+  $x = "Hello World!";
+  echo "<br/> After Reversing: " . strrev($x);
+  echo "<br/> Before reversing: " . $x;
+  ```
+
+- **trim**
+
+  ```php
+  $var = " Hello World! ";
+  echo trim($x); // "Hello World!"
+  echo $x; // " Hello World1 "
+  ```
+
+- **explode**  
+  Convert string into an Array.  
+  return: an array by spliting a given string  
+  parameters: (seperator, string_to_split)
