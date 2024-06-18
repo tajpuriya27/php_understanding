@@ -10,6 +10,9 @@
 
 ## Part0.2: How to get most out of this course?
 
+**Confusion of hooks and functions in official documentation:**
+If you go through the official developer guide of wordpress you will notice that word: hook and functions are used interchangeably. For an instance: in some parts, you will see calling the `register_activation_hook()` function as a `hook` and placing it into `references/functions/` section. It is bit confusing. Therefore, we stick to calling these as functions. For us any so-called hook within documentation that is being called as a function is a function. And the wordpress trigger points like `init`, `pre-post-type`, `wp_loaded` etc are hooks.
+
 ## Part0.3: Requirements
 
 1. [Composer](https://getcomposer.org/download/) - Same as npm in node.js
@@ -54,6 +57,14 @@
 
     Congratulations! You have created your first Plugin and can activate it.
 
+    The 3 basic wordpress functions([_called hooks in documentation_](#part02-how-to-get-most-out-of-this-course)) you’ll need when creating a plugin are the [register_activation_hook()](https://developer.wordpress.org/reference/functions/register_activation_hook/) , the [register_deactivation_hook()](https://developer.wordpress.org/reference/functions/register_deactivation_hook/) , and the [register_uninstall_hook()](https://developer.wordpress.org/reference/functions/register_uninstall_hook/).
+
+    **The activation hook function** is run when you activate your plugin. You would use this to provide a function to set up your plugin — for example, creating some default settings in the options table.
+
+    **The deactivation hook function** is run when you deactivate your plugin. You would use this to provide a function that clears any temporary data stored by your plugin.
+
+    **The Uninstall hook function** These uninstall methods are used to clean up after your plugin is deleted using the WordPress Admin. You would use this to delete all data created by your plugin, such as any options that were added to the options table.
+
 8.  Some notes
 
 ## PHP
@@ -84,3 +95,37 @@ wp scaffold plugin sample-plugin
 > Note: You must have to install the Wp-Cli package globally to use the above command.
 
 > Note: There are many parameters that can be used with hte above command while scaffolding the plugin. [Click here to view](https://developer.wordpress.org/cli/commands/scaffold/plugin/)
+
+## Your First Wordpress Theme
+
+## Understanding Wordpress Database
+
+## Wp-cli
+
+Some handy commands of wp-cli, command line tool are:
+Manipulating plugin and themes within wordpress environment.
+
+-   `wp plugin list`
+-   `wp plugin activate plugin-name`
+-   `wp plugin deactivate plugin-name`
+-   `wp theme list`
+-   `wp theme activate theme-name`
+-   `wp theme deactivate theme-name`
+
+Querying data from database
+
+-   [`wp post <command>`](https://developer.wordpress.org/cli/commands/post/): use different commands to query through all post(blogs/pages).
+
+-   [`wp post-type list`](https://developer.wordpress.org/cli/commands/post-type/list/) : list all registered post-type.
+-   [`wp post-type get`](https://developer.wordpress.org/cli/commands/post-type/get/) : Get details about a regestered post-type
+
+Beside the above commands, there are alot of commands provided by WP-CLI, [click here to view them](https://developer.wordpress.org/cli/commands/).
+
+<table>
+<thead>
+<tr>
+<th scope="col">Command</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/admin/">wp admin</a></td><td>Open /wp-admin/ in a browser.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/cache/">wp cache</a></td><td>Adds, removes, fetches, and flushes the WP Object Cache object.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/cap/">wp cap</a></td><td>Adds, removes, and lists capabilities of a user role.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/cli/">wp cli</a></td><td>Reviews current WP-CLI info, checks for updates, or views defined aliases.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/comment/">wp comment</a></td><td>Creates, updates, deletes, and moderates comments.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/config/">wp config</a></td><td>Generates and reads the wp-config.php file.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/core/">wp core</a></td><td>Downloads, installs, updates, and manages a WordPress installation.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/cron/">wp cron</a></td><td>Tests, runs, and deletes WP-Cron events; manages WP-Cron schedules.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/db/">wp db</a></td><td>Performs basic database operations using credentials stored in wp-config.php.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/dist-archive/">wp dist-archive</a></td><td>Create a distribution archive based on a project’s .distignore file.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/embed-2/">wp embed</a></td><td>Inspects oEmbed providers, clears embed cache, and more.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/eval/">wp eval</a></td><td>Executes arbitrary PHP code.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/eval-file/">wp eval-file</a></td><td>Loads and executes a PHP file.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/export/">wp export</a></td><td>Exports WordPress content to a WXR file.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/find/">wp find</a></td><td>Find WordPress installations on the filesystem.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/help/">wp help</a></td><td>Gets help on WP-CLI, or on a specific command.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/i18n/">wp i18n</a></td><td>Provides internationalization tools for WordPress projects.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/import/">wp import</a></td><td>Imports content from a given WXR file.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/language/">wp language</a></td><td>Installs, activates, and manages language packs.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/maintenance-mode/">wp maintenance-mode</a></td><td>Activates, deactivates or checks the status of the maintenance mode of a site.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/media/">wp media</a></td><td>Imports files as attachments, regenerates thumbnails, or lists registered image sizes.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/menu/">wp menu</a></td><td>Lists, creates, assigns, and deletes the active theme’s navigation menus.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/network/">wp network</a></td><td>Perform network-wide operations.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/option/">wp option</a></td><td>Retrieves and sets site options, including plugin and WordPress settings.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/package/">wp package</a></td><td>Lists, installs, and removes WP-CLI packages.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/plugin/">wp plugin</a></td><td>Manages plugins, including installs, activations, and updates.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/post/">wp post</a></td><td>Manages posts, content, and meta.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/post-type/">wp post-type</a></td><td>Retrieves details on the site’s registered post types.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/profile/">wp profile</a></td><td>Quickly identify what’s slow with WordPress.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/rewrite/">wp rewrite</a></td><td>Lists or flushes the site’s rewrite rules, updates the permalink structure.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/role/">wp role</a></td><td>Manages user roles, including creating new roles and resetting to defaults.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/scaffold/">wp scaffold</a></td><td>Generates code for post types, taxonomies, plugins, child themes, etc.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/search-replace/">wp search-replace</a></td><td>Searches/replaces strings in the database.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/server/">wp server</a></td><td>Launches PHP’s built-in web server for a specific WordPress installation.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/shell/">wp shell</a></td><td>Opens an interactive PHP console for running and testing PHP code.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/sidebar/">wp sidebar</a></td><td>Lists registered sidebars.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/site/">wp site</a></td><td>Creates, deletes, empties, moderates, and lists one or more sites on a multisite installation.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/super-admin/">wp super-admin</a></td><td>Lists, adds, or removes super admin users on a multisite installation.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/taxonomy/">wp taxonomy</a></td><td>Retrieves information about registered taxonomies.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/term/">wp term</a></td><td>Manages taxonomy terms and term meta, with create, delete, and list commands.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/theme/">wp theme</a></td><td>Manages themes, including installs, activations, and updates.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/transient/">wp transient</a></td><td>Adds, gets, and deletes entries in the WordPress Transient Cache.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/user/">wp user</a></td><td>Manages users, along with their roles, capabilities, and meta.</td></tr><tr class=""><td><a href="https://developer.wordpress.org/cli/commands/widget/">wp widget</a></td><td>Manages widgets, including adding and moving them within sidebars.</td></tr></tbody></table>
