@@ -20,15 +20,41 @@
 
 ## Introduction to Wordpress
 
-1. Difference: wordpress.com and wordpress.org
-2. Requirement
-3. Install: laragon
-4. Install: wordpress
-5. Difference: Plugin and Theme
-6. First Theme
-   Q. Is there any way to scaffold the theme directory same as we can scaffold the gutenburg block?
-7. First Plugin
-8. Some notes
+1.  Difference: wordpress.com and wordpress.org
+2.  Requirement
+3.  Install: laragon
+4.  Install: wordpress
+5.  Difference: Plugin and Theme
+6.  First Theme
+    Q. Is there any way to scaffold the theme directory same as we can scaffold the gutenburg block?
+7.  **First Plugin**
+
+    The only file required to make a plugin is `plugin-name.php` file with the `plugin/plugin_name` directory.
+
+    The plugin header comment must comply with the [header requirements](https://developer.wordpress.org/plugins/plugin-basics/header-requirements/), and at the very least, contain the name of the plugin i.e. in `plugin-name.php` file:
+
+    ```php
+    /**
+    * Plugin Name:     YOUR PLUGIN NAME
+    **/
+    ```
+
+    At this point, if you go to plugin settings in wordpress dashboard, you can see a new plugin to ready to activate with the name `YOUR PLUGIN NAME`.
+
+    The entry point of the plugin is `plugin-name.php` file. Add an echo within this file and see what happens:
+
+    ```php
+    /**
+    * Plugin Name:     YOUR PLUGIN NAME
+    **/
+    echo 'Hello, world!';
+    ```
+
+    If you visit any page/blog, you will see the text, _Hello, world!_ at the very top. [Click here to view](http://wpbasics.test/sample-page/) sample page - created by wordpress by default.
+
+    Congratulations! You have created your first Plugin and can activate it.
+
+8.  Some notes
 
 ## PHP
 
