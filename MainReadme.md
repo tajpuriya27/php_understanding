@@ -13,6 +13,8 @@
 **Confusion of hooks and functions in official documentation:**
 If you go through the official developer guide of wordpress you will notice that word: hook and functions are used interchangeably. For an instance: in some parts, you will see calling the `register_activation_hook()` function as a `hook` and placing it into `references/functions/` section. It is bit confusing. Therefore, we stick to calling these as functions. For us any so-called hook within documentation that is being called as a function is a function. And the wordpress trigger points like `init`, `pre-post-type`, `wp_loaded` etc are hooks.
 
+**Nomanclature:** Nomanclature in official documentation is not uniform. For an instance: first parameter of function `add_shortcode` is named `$tag` and third parameter of function `shortcode_atts` is named `$shortcode`. However, both denotes to the name of the shortcode that will be using by the user in the frontend. We hereby make them same and use `$shortcode` for our convinence.
+
 ## Part0.3: Requirements
 
 1. [Composer](https://getcomposer.org/download/) - Same as npm in node.js
