@@ -88,6 +88,71 @@ If you go through the official developer guide of wordpress you will notice that
 
     $filter -:- Type of filter to apply. `raw`, `db`, `edit`, or `display`.
 
+-   [`add_shortcode()`](https://developer.wordpress.org/reference/functions/add_shortcode/):
+    `add_shortcode( string $tag, callable $callback )`
+
+    **Parameters:**
+    $tag :- Shortcode tag to be searched in post content.
+
+    $callback :- Callback function to run when the shortcode is found.
+
+    Every shortcode callback is passed three parameters by default, including an array of attributes ($atts), the shortcode content or null if not set ($content), and finally the shortcode tag itself ($shortcode_tag), in that order.
+
+-   [`add_menu_page()`](https://developer.wordpress.org/reference/functions/add_menu_page/):
+    `add_menu_page( string $page_title, string $menu_title, string $capability, string $menu_slug, callable $callback = ”, string $icon_url = ”, int|float $position = null ): string`
+
+    Adds a top-level Menu page
+
+-   [`add_submenu_page()`](https://developer.wordpress.org/reference/functions/add_submenu_page/):
+    `add_submenu_page( string $parent_slug, string $page_title, string $menu_title, string $capability, string $menu_slug, callable $callback = ”, int|float $position = null ): string|false`
+
+    Adds a submenu page.
+
+## Use of `add_shortcode($tag, $callback_function)` and `shortcode_atts($defaults, $user_atts, $Shortcode_tag)`
+
+Coding Part:
+
+```php
+    function callback_fun_while_adding_shortcode( $atts ) {
+    // Define the default attributes and their values
+    $defaults = array(
+        'title' => 'Default Title',
+        'count' => 5,
+        'show'  => 'yes'
+    );
+
+    // Merge the user-defined attributes with the defaults
+    $atts = shortcode_atts( $defaults, $atts );
+
+    // Access the attributes
+    $title = $atts['title'];
+    $count = intval( $atts['count'] );
+    $show  = $atts['show'] === 'yes';
+
+    // Generate the output
+    $output = "<h2>{$title}</h2>";
+    if ( $show ) {
+        $output .= "<p>Count: {$count}</p>";
+    }
+
+    return $output;
+}
+add_shortcode( 'my_shortcode', 'callback_fun_while_adding_shortcode' );
+```
+
+Use of Shortcode in editor
+
+```html
+[my_shortcode title="Custom Title" count="10" show="no"]
+```
+
+Output HTML while using shortcode with custom attribute:
+
+```html
+<h2>Custom Title</h2>
+<p>Count: 5</p>
+```
+
 ## Wordpress Hook
 
 ## Debugging in Wordpress
