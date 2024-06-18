@@ -140,6 +140,38 @@ Coding Part:
 add_shortcode( 'my_shortcode', 'callback_fun_while_adding_shortcode' );
 ```
 
+Above code can be refactor to use third parameter of `shortcode_atts` function
+
+```php
+function manage_shortcode_atts( $shortcode_tag, $atts ) {
+    $defaults = array(
+        'title' => 'Default Title',
+        'count' => 5,
+        'show'  => 'yes'
+    );
+
+    return shortcode_atts( $defaults, $atts, $shortcode_tag );
+}
+    function callback_fun_while_adding_shortcode( $atts ) {
+
+    $atts = manage_shortcode_atts( 'my_shortcode', $atts );
+
+    // Access the attributes
+    $title = $atts['title'];
+    $count = intval( $atts['count'] );
+    $show  = $atts['show'] === 'yes';
+
+    // Generate the output
+    $output = "<h2>{$title}</h2>";
+    if ( $show ) {
+        $output .= "<p>Count: {$count}</p>";
+    }
+
+    return $output;
+}
+add_shortcode( 'my_shortcode', 'callback_fun_while_adding_shortcode' );
+```
+
 Use of Shortcode in editor
 
 ```html
