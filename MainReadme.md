@@ -89,10 +89,10 @@ If you go through the official developer guide of wordpress you will notice that
     $filter -:- Type of filter to apply. `raw`, `db`, `edit`, or `display`.
 
 -   [`add_shortcode()`](https://developer.wordpress.org/reference/functions/add_shortcode/):
-    `add_shortcode( string $tag, callable $callback )`
+    `add_shortcode( string $shortcode, callable $callback )`
 
     **Parameters:**
-    $tag :- Shortcode tag to be searched in post content.
+    $shortcode :- Shortcode tag to be searched in post content.
 
     $callback :- Callback function to run when the shortcode is found.
 
@@ -108,7 +108,7 @@ If you go through the official developer guide of wordpress you will notice that
 
     Adds a submenu page.
 
-## Use of `add_shortcode($tag, $callback_function)` and `shortcode_atts($defaults, $user_atts, $Shortcode_tag)`
+## Use of `add_shortcode($shortcode, $callback_function)` and `shortcode_atts($defaults, $user_atts, $shortcode)`
 
 Coding Part:
 
