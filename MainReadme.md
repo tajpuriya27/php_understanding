@@ -25,12 +25,17 @@ If you go through the official developer guide of wordpress you will notice that
 
 ## Introduction to Wordpress
 
-1.  Difference: wordpress.com and wordpress.org
-2.  Requirement
-3.  Install: laragon
-4.  Install: wordpress
-5.  Difference: Plugin and Theme
-6.  **First Theme**
+### 1. Difference: wordpress.com and wordpress.org
+
+### 2. Requirement
+
+### 3. Install: laragon
+
+### 4. Install: wordpress
+
+### 5. Difference: Plugin and Theme
+
+### 6. **First Theme**
 
     Create a directory named, `custom-theme` within `wp-content/theme/` directory. Add new file, `style.css` and copy the following to the file:
 
@@ -84,7 +89,7 @@ If you go through the official developer guide of wordpress you will notice that
 
     > Note: After looping using the this query(main-query), it is recommended to reset the number of post in global variables for other similar query. So, `wp_reset_postdata()` must be used.
 
-7.  **First Plugin**
+### 7. **First Plugin**
 
     The only file required to make a plugin is `plugin-name.php` file with the `plugin/plugin_name` directory.
 
@@ -119,7 +124,7 @@ If you go through the official developer guide of wordpress you will notice that
 
     **The Uninstall hook function** These uninstall methods are used to clean up after your plugin is deleted using the WordPress Admin. You would use this to delete all data created by your plugin, such as any options that were added to the options table.
 
-8.  Some notes
+### 8. Some notes
 
 ## PHP
 
@@ -240,6 +245,16 @@ Output HTML while using shortcode with custom attribute:
 ```
 
 ## Wordpress Hook
+
+There are around 1470 hooks present in wordpress. When Wordpress project is loading it goes through via lots of hooks and we can tap into those wordpress hook to run specific functions as per our needs. Our functions get executed as soon as the hooks are fired by wordpress. We can add custom hooks and fire them in a codebase whenever we need it. Adding hooks is done by `add_action` or `add_filter` function and firing them is done by `do_action` or `apply_filter` function.
+
+Some of the wordpress inbuilt hooks and their firing position is listed below. [Click here to view all hooks](https://developer.wordpress.org/reference/hooks/)
+
+| Inbuilt Hook | Fired when                            | Specially Designed For         |
+| ------------ | ------------------------------------- | ------------------------------ |
+| admin_menu   | Wordpress is preparing the admin menu | adding items to the admin menu |
+|              |                                       |                                |
+|              |                                       |                                |
 
 ## Debugging in Wordpress
 
