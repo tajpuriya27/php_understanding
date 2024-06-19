@@ -37,92 +37,92 @@ If you go through the official developer guide of wordpress you will notice that
 
 ### 6. **First Theme**
 
-    Create a directory named, `custom-theme` within `wp-content/theme/` directory. Add new file, `style.css` and copy the following to the file:
+Create a directory named, `custom-theme` within `wp-content/theme/` directory. Add new file, `style.css` and copy the following to the file:
 
-    ```css
-    /*
-    Theme Name:     Custom Theme
-    Theme URI:      https://uri-of-theme.com
-    Description:    Theme create in the process of understanding WP.
-    Author:         Your Name
-    Author URI:     https://authorportfolio.com/
-    Version:        0.1
-    */
-    ```
+```css
+/*
+Theme Name:     Custom Theme
+Theme URI:      https://uri-of-theme.com
+Description:    Theme create in the process of understanding WP.
+Author:         Your Name
+Author URI:     https://authorportfolio.com/
+Version:        0.1
+*/
+```
 
-    Visit the Wordpress dashboard Appearence section. Warning will be shown at the very bottom.
+Visit the Wordpress dashboard Appearence section. Warning will be shown at the very bottom.
 
-    > Template is missing. Standalone themes need to have a `templates/index.html` or `index.php` template file. Child themes need to have a Template header in the style.css stylesheet.
+> Template is missing. Standalone themes need to have a `templates/index.html` or `index.php` template file. Child themes need to have a Template header in the style.css stylesheet.
 
-    Go back to `custom-theme` directory and add `index.php` file. Leave it blank for now and check the live-site. You will see nothing in the screen. View the browser's developer console to see if there is any warnings or errors.
+Go back to `custom-theme` directory and add `index.php` file. Leave it blank for now and check the live-site. You will see nothing in the screen. View the browser's developer console to see if there is any warnings or errors.
 
-    Now, simply add any text in index.php and view the frontend again. You will able to see the text that you have added.
+Now, simply add any text in index.php and view the frontend again. You will able to see the text that you have added.
 
-    Replace the whole content of `index.php` by below code:
+Replace the whole content of `index.php` by below code:
 
-    ```php
-    <?php
-    $args      = array(
-        'post_type'      => 'post',
-        'posts_per_page' => -1,
-    );
-    $the_query = new WP_Query( $args );
+```php
+<?php
+$args      = array(
+    'post_type'      => 'post',
+    'posts_per_page' => -1,
+);
+$the_query = new WP_Query( $args );
 
 
 
-    // The Loop
-    if ( $the_query->have_posts() ) {
-        while ( $the_query->have_posts() ) {
-            $the_query->the_post();
-            echo '<h2>' . get_the_title() . '</h2>';
-            echo '<div>' . get_the_content() . '</div>';
-        }
-    } else {
-        echo 'No posts found';
+// The Loop
+if ( $the_query->have_posts() ) {
+    while ( $the_query->have_posts() ) {
+        $the_query->the_post();
+        echo '<h2>' . get_the_title() . '</h2>';
+        echo '<div>' . get_the_content() . '</div>';
     }
-    /* Restore original Post Data */
-    wp_reset_postdata();
-    ?>
-    ```
+} else {
+    echo 'No posts found';
+}
+/* Restore original Post Data */
+wp_reset_postdata();
+?>
+```
 
-    We are using `WP_Query` class present in `wp-includes/class-wp-query.php` to create it's instance `$the_query`. Then we loop through all the post, echo their `title` wrapping in `<h2>` and echo the content wrapping in `<div>`.
+We are using `WP_Query` class present in `wp-includes/class-wp-query.php` to create it's instance `$the_query`. Then we loop through all the post, echo their `title` wrapping in `<h2>` and echo the content wrapping in `<div>`.
 
-    > Note: After looping using the this query(main-query), it is recommended to reset the number of post in global variables for other similar query. So, `wp_reset_postdata()` must be used.
+> Note: After looping using the this query(main-query), it is recommended to reset the number of post in global variables for other similar query. So, `wp_reset_postdata()` must be used.
 
 ### 7. **First Plugin**
 
-    The only file required to make a plugin is `plugin-name.php` file with the `plugin/plugin_name` directory.
+The only file required to make a plugin is `plugin-name.php` file with the `plugin/plugin_name` directory.
 
-    The plugin header comment must comply with the [header requirements](https://developer.wordpress.org/plugins/plugin-basics/header-requirements/), and at the very least, contain the name of the plugin i.e. in `plugin-name.php` file:
+The plugin header comment must comply with the [header requirements](https://developer.wordpress.org/plugins/plugin-basics/header-requirements/), and at the very least, contain the name of the plugin i.e. in `plugin-name.php` file:
 
-    ```php
-    /**
-    * Plugin Name:     YOUR PLUGIN NAME
-    **/
-    ```
+```php
+/**
+* Plugin Name:     YOUR PLUGIN NAME
+**/
+```
 
-    At this point, if you go to plugin settings in wordpress dashboard, you can see a new plugin to ready to activate with the name `YOUR PLUGIN NAME`.
+At this point, if you go to plugin settings in wordpress dashboard, you can see a new plugin to ready to activate with the name `YOUR PLUGIN NAME`.
 
-    The entry point of the plugin is `plugin-name.php` file. Add an echo within this file and see what happens:
+The entry point of the plugin is `plugin-name.php` file. Add an echo within this file and see what happens:
 
-    ```php
+```php
     /**
     * Plugin Name:     YOUR PLUGIN NAME
     **/
     echo 'Hello, world!';
-    ```
+```
 
-    If you visit any page/blog, you will see the text, _Hello, world!_ at the very top. [Click here to view](http://wpbasics.test/sample-page/) sample page - created by wordpress by default.
+If you visit any page/blog, you will see the text, _Hello, world!_ at the very top. [Click here to view](http://wpbasics.test/sample-page/) sample page - created by wordpress by default.
 
-    Congratulations! You have created your first Plugin and can activate it.
+Congratulations! You have created your first Plugin and can activate it.
 
-    The 3 basic wordpress functions([_called hooks in documentation_](#part02-how-to-get-most-out-of-this-course)) you’ll need when creating a plugin are the [register_activation_hook()](https://developer.wordpress.org/reference/functions/register_activation_hook/) , the [register_deactivation_hook()](https://developer.wordpress.org/reference/functions/register_deactivation_hook/) , and the [register_uninstall_hook()](https://developer.wordpress.org/reference/functions/register_uninstall_hook/).
+The 3 basic wordpress functions([_called hooks in documentation_](#part02-how-to-get-most-out-of-this-course)) you’ll need when creating a plugin are the [register_activation_hook()](https://developer.wordpress.org/reference/functions/register_activation_hook/) , the [register_deactivation_hook()](https://developer.wordpress.org/reference/functions/register_deactivation_hook/) , and the [register_uninstall_hook()](https://developer.wordpress.org/reference/functions/register_uninstall_hook/).
 
-    **The activation hook function** is run when you activate your plugin. You would use this to provide a function to set up your plugin — for example, creating some default settings in the options table.
+**The activation hook function** is run when you activate your plugin. You would use this to provide a function to set up your plugin — for example, creating some default settings in the options table.
 
-    **The deactivation hook function** is run when you deactivate your plugin. You would use this to provide a function that clears any temporary data stored by your plugin.
+**The deactivation hook function** is run when you deactivate your plugin. You would use this to provide a function that clears any temporary data stored by your plugin.
 
-    **The Uninstall hook function** These uninstall methods are used to clean up after your plugin is deleted using the WordPress Admin. You would use this to delete all data created by your plugin, such as any options that were added to the options table.
+**The Uninstall hook function** These uninstall methods are used to clean up after your plugin is deleted using the WordPress Admin. You would use this to delete all data created by your plugin, such as any options that were added to the options table.
 
 ### 8. Some notes
 
