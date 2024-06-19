@@ -161,11 +161,82 @@ The 3 basic wordpress functions([_called hooks in documentation_](#part02-how-to
     `add_menu_page( string $page_title, string $menu_title, string $capability, string $menu_slug, callable $callback = ”, string $icon_url = ”, int|float $position = null ): string`
 
     Adds a top-level Menu page
+    It is used to add the Menu to the admin page. Using it directly may cause fatal error. It is recommended to use it with `admin_menu` hook.
+
+    **Parameters:**
+    $page_title :- The text to be displayed in the title tags of the page when the menu is selected.
 
 -   [`add_submenu_page()`](https://developer.wordpress.org/reference/functions/add_submenu_page/):
     `add_submenu_page( string $parent_slug, string $page_title, string $menu_title, string $capability, string $menu_slug, callable $callback = ”, int|float $position = null ): string|false`
 
     Adds a submenu page.
+
+    Code showing the usage of `add_menu_page` and `add_submenu_page` is shown below:
+
+    ```php
+    // Hook the 'admin_menu' action hook, run the function named 'my_custom_menu'
+    add_action( 'admin_menu', 'my_custom_menu' );
+
+    // Add a top-level menu and submenus
+    function my_custom_menu() {
+        // Add a top-level menu
+        add_menu_page(
+            'Custom Menu Title',   // Page title
+            'Custom Menu',         // Menu title
+            'manage_options',      // Capability
+            'custom-menu-slug',    // Menu slug
+            'custom_menu_page',    // Function to display the page content
+            'dashicons-admin-generic', // Icon URL
+            2                      // Position
+        );
+
+        // Add a submenu under the top-level menu
+        add_submenu_page(
+            'custom-menu-slug',    // Parent slug
+            'Submenu Page Title 1', // Page title
+            'Submenu 1',           // Menu title
+            'manage_options',      // Capability
+            'custom-submenu-slug-1', // Menu slug
+            'custom_submenu_page_1' // Function to display the page content
+        );
+
+        // Add another submenu under the top-level menu
+        add_submenu_page(
+            'custom-menu-slug',    // Parent slug
+            'Submenu Page Title 2', // Page title
+            'Submenu 2',           // Menu title
+            'manage_options',      // Capability
+            'custom-submenu-slug-2', // Menu slug
+            'custom_submenu_page_2' // Function to display the page content
+        );
+    }
+
+    // Display content for the top-level menu page
+    function custom_menu_page() {
+        echo '<h2>' . get_admin_page_title() . '</h2>';
+        echo '<div class="wrap">';
+        echo '<h1>Custom Menu Page</h1>';
+        echo '<p>Welcome to the custom menu page!</p>';
+        echo '</div>';
+    }
+
+    // Display content for the first submenu page
+    function custom_submenu_page_1() {
+        echo '<div class="wrap">';
+        echo '<h1>Submenu Page 1</h1>';
+        echo '<p>Welcome to the first submenu page!</p>';
+        echo '</div>';
+    }
+
+    // Display content for the second submenu page
+    function custom_submenu_page_2() {
+        echo '<div class="wrap">';
+        echo '<h1>Submenu Page 2</h1>';
+        echo '<p>Welcome to the second submenu page!</p>';
+        echo '</div>';
+    }
+
+    ```
 
 ## Use of `add_shortcode($shortcode, $callback_function)` and `shortcode_atts($defaults, $user_atts, $shortcode)`
 
