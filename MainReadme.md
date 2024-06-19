@@ -126,6 +126,17 @@ The 3 basic wordpress functions([_called hooks in documentation_](#part02-how-to
 
 ### 8. Some notes
 
+<details><summary>You have created your first theme and first plugin. Both are activated. Can you guess the code execution flow; whose code is executed first?</summary>
+
+In WordPress, when you visit a site, the order of execution is quite structured. Here's a simplified version of what happens:
+
+1. Core WordPress Code: The core WordPress code is loaded first. This includes the initial bootstrap files like wp-load.php and wp-config.php, and the main wp-settings.php file which sets up the WordPress environment and loads necessary files.
+
+2. Plugins: Once the core WordPress code is loaded, the plugins are executed. This happens during the execution of the wp-settings.php file. All active plugins are _loaded in the order they were activated._ This means that if a plugin needs to hook into WordPress actions or filters, it does so at this stage.
+
+3. Themes: After the plugins are loaded and executed, the theme's code is executed. This includes the functions.php file of the active theme, which allows the theme to hook into WordPress actions and filters, and any template files that are used to generate the page being viewed.
+ </details>
+
 ## PHP
 
 1. Variables
