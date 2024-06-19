@@ -238,6 +238,34 @@ The 3 basic wordpress functions([_called hooks in documentation_](#part02-how-to
 
     ```
 
+    > Note: When you add a top-level menu with `add_menu_page()`, WordPress automatically creates a submenu for that page. This submenu item will have the same title as the top-level menu and will be the first item in the submenu. This is the default behavior of the `add_menu_page()` function. Add below code:
+
+    ```php
+    // above code as it is.
+    add_action('admin_head', 'remove_duplicate_submenu_item');
+
+    function remove_duplicate_submenu_item() {
+    remove_submenu_page('custom-menu-slug', 'custom-menu-slug');
+    }
+
+    ```
+
+    Alternatively, add ` remove_submenu_page('custom-menu-slug', 'custom-menu-slug');` at the last of function `my_custom_menu` after adding all submenus.
+
+    When the automatically created sub-menu is removed by either of the above method. The callback-function attached to the `add_menu_page` is never used and it can be removed.
+
+    ```php
+    // remove custom_menu_page function i.e. below function
+    function custom_menu_page() {
+        echo '<h2>' . get_admin_page_title() . '</h2>';
+        echo '<div class="wrap">';
+        echo '<h1>Custom Menu Page</h1>';
+        echo '<p>Welcome to the custom menu page!</p>';
+        echo '</div>';
+    }
+    // all other code remains unchanged.
+    ```
+
 ## Use of `add_shortcode($shortcode, $callback_function)` and `shortcode_atts($defaults, $user_atts, $shortcode)`
 
 Coding Part:
