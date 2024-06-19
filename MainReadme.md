@@ -30,8 +30,60 @@ If you go through the official developer guide of wordpress you will notice that
 3.  Install: laragon
 4.  Install: wordpress
 5.  Difference: Plugin and Theme
-6.  First Theme
-    Q. Is there any way to scaffold the theme directory same as we can scaffold the gutenburg block?
+6.  **First Theme**
+
+    Create a directory named, `custom-theme` within `wp-content/theme/` directory. Add new file, `style.css` and copy the following to the file:
+
+    ```css
+    /*
+    Theme Name:     Custom Theme
+    Theme URI:      https://uri-of-theme.com
+    Description:    Theme create in the process of understanding WP.
+    Author:         Your Name
+    Author URI:     https://authorportfolio.com/
+    Version:        0.1
+    */
+    ```
+
+    Visit the Wordpress dashboard Appearence section. Warning will be shown at the very bottom.
+
+    > Template is missing. Standalone themes need to have a `templates/index.html` or `index.php` template file. Child themes need to have a Template header in the style.css stylesheet.
+
+    Go back to `custom-theme` directory and add `index.php` file. Leave it blank for now and check the live-site. You will see nothing in the screen. View the browser's developer console to see if there is any warnings or errors.
+
+    Now, simply add any text in index.php and view the frontend again. You will able to see the text that you have added.
+
+    Replace the whole content of `index.php` by below code:
+
+    ```php
+    <?php
+    $args      = array(
+        'post_type'      => 'post',
+        'posts_per_page' => -1,
+    );
+    $the_query = new WP_Query( $args );
+
+
+
+    // The Loop
+    if ( $the_query->have_posts() ) {
+        while ( $the_query->have_posts() ) {
+            $the_query->the_post();
+            echo '<h2>' . get_the_title() . '</h2>';
+            echo '<div>' . get_the_content() . '</div>';
+        }
+    } else {
+        echo 'No posts found';
+    }
+    /* Restore original Post Data */
+    wp_reset_postdata();
+    ?>
+    ```
+
+    We are using `WP_Query` class present in `wp-includes/class-wp-query.php` to create it's instance `$the_query`. Then we loop through all the post, echo their `title` wrapping in `<h2>` and echo the content wrapping in `<div>`.
+
+    > Note: After looping using the this query(main-query), it is recommended to reset the number of post in global variables for other similar query. So, `wp_reset_postdata()` must be used.
+
 7.  **First Plugin**
 
     The only file required to make a plugin is `plugin-name.php` file with the `plugin/plugin_name` directory.
@@ -190,6 +242,8 @@ Output HTML while using shortcode with custom attribute:
 ## Wordpress Hook
 
 ## Debugging in Wordpress
+
+-   When you first install Wordpress, file `debug.log` within the wordpress directory is not present. When enabling debug mode from the file `wp-config.php`. It is automatically created and logs are shown within this file.
 
 # Part 2
 
