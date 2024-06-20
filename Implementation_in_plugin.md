@@ -163,6 +163,10 @@ function enqueue_popup_script() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_popup_script' );
+/*
+wp_enqueue_scripts is a action hook fired while wordpress initialization process, loading all necessary files and plugins.
+wp_enqueue_scripts action is designed to be used to enqueue scripts and styles that are needed for the front-end of the website. Developers hook their functions to this action to add their custom scripts and styles.
+*/
 
 ```
 
