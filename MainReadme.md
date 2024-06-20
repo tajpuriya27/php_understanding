@@ -124,7 +124,11 @@ The 3 basic wordpress functions([_called hooks in documentation_](#part02-how-to
 
 **The Uninstall hook function** These uninstall methods are used to clean up after your plugin is deleted using the WordPress Admin. You would use this to delete all data created by your plugin, such as any options that were added to the options table.
 
-### 8. Some notes
+### 8. Notes
+
+-   [Double-check] No Functions within wordpress plugin or theme is called directly. They must be hooked to custom or inbuilt hooks. Hooked function may call other function on their exection.
+
+### 9. FAQs
 
 <details><summary>You have created your first theme and first plugin. Both are activated. Can you guess the code execution flow; whose code is executed first?</summary>
 
@@ -275,6 +279,65 @@ In WordPress, when you visit a site, the order of execution is quite structured.
         echo '</div>';
     }
     // all other code remains unchanged.
+    ```
+
+-   [`register_post_type()`](https://developer.wordpress.org/reference/functions/register_post_type/)
+    `register_post_type( string $post_type, array|string $args = array() ): WP_Post_Type|WP_Error`
+
+    ```php
+    register_post_type(
+    		'custom_popup',
+    		array(
+    			'labels'             => array(
+    				'name'                     => 'Custom Popups',
+    				'singular_name'            => 'Custom Popup',
+    				'add_new'                  => 'Add New',
+    				'add_new_item'             => 'Add New Popup',
+    				'edit_item'                => 'Edit Popup',
+    				'new_item'                 => 'New Popup',
+    				'view_item'                => 'View Popup',
+    				'view_items'               => 'View Popups',
+    				'search_items'             => 'Search Popups',
+    				'not_found'                => 'No Popups found',
+    				'not_found_in_trash'       => 'No Popups found in Trash',
+    				'all_items'                => 'All Popups',
+    				'archives'                 => 'Popup Archives',
+    				'attributes'               => 'Popup Attributes',
+    				'insert_into_item'         => 'Insert into Popup',
+    				'uploaded_to_this_item'    => 'Uploaded to this Popup',
+    				'featured_image'           => 'Featured Image',
+    				'set_featured_image'       => 'Set featured image',
+    				'remove_featured_image'    => 'Remove featured image',
+    				'use_featured_image'       => 'Use as featured image',
+    				'filter_items_list'        => 'Filter Popups list',
+    				'items_list_navigation'    => 'Popups list navigation',
+    				'items_list'               => 'Popups list',
+    				'item_published'           => 'Popup published',
+    				'item_published_privately' => 'Popup published privately',
+    				'item_reverted_to_draft'   => 'Popup reverted to draft',
+    				'item_scheduled'           => 'Popup scheduled',
+    				'item_updated'             => 'Popup updated',
+    			),
+    			'description'        => 'Description.',
+    			'public'             => true,
+    			'publicly_queryable' => true,
+    			'show_ui'            => true,
+    			'show_in_menu'       => true, // show in admin page
+    			'show_in_nav_menus'  => true,
+    			'show_in_admin_bar'  => true,
+    			'menu_position'      => 5,
+    			'menu_icon'          => 'dashicons-admin-generic',
+    			'capability_type'    => 'post',
+    			'hierarchical'       => false,
+    			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
+    			'taxonomies'         => array( 'category', 'post_tag' ),
+    			'has_archive'        => false,
+    			'query_var'          => true,
+    			'can_export'         => true,
+    			'show_in_rest'       => true, // Force to use gutenberg editor while editing
+    		)
+    	);
+
     ```
 
 ## Use of `add_shortcode($shortcode, $callback_function)` and `shortcode_atts($defaults, $user_atts, $shortcode)`
