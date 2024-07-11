@@ -31,13 +31,25 @@ WordPress.com is a hosted service where you can create a website without needing
 
 WordPress.org provides the open-source software(WordPress Plugin and Themes) that you can download and install on your own web server, giving you more control over customization and hosting but requiring technical knowledge and responsibility for upkeep.
 
-### 2. Requirement
+### 2. Pre-requisites
+
+-   Basic knowledge of PHP
+-   WordPress Hooks and their sequence of execution
+-   WordPress database understanding
 
 ### 3. Install: laragon
 
+// Visit official site and install laragon.
+
 ### 4. Install: wordpress
 
+// Visit official site and install wordPress.
+
 ### 5. Difference: Plugin and Theme
+
+WordPress plugin adds specific functionalities or features to your website, such as contact forms or SEO optimization tools, without changing the site's core design.
+
+WordPress theme, on the other hand, controls the overall design and appearance of your website, including layout, colors, fonts, and style. Themes determine how your content is presented to visitors, while plugins enhance what your site can do.
 
 ### 6. **First Theme**
 
