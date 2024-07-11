@@ -27,6 +27,10 @@ If you go through the official developer guide of wordpress you will notice that
 
 ### 1. Difference: wordpress.com and wordpress.org
 
+WordPress.com is a hosted service where you can create a website without needing to manage the technical aspects like hosting and maintenance.
+
+WordPress.org provides the open-source software(WordPress Plugin and Themes) that you can download and install on your own web server, giving you more control over customization and hosting but requiring technical knowledge and responsibility for upkeep.
+
 ### 2. Requirement
 
 ### 3. Install: laragon
@@ -501,3 +505,9 @@ wp_navigation
 wp_font_family
 wp_font_face
 ```
+
+# Part 3
+
+## Part 3.0 Understanding Gutenberg Block
+
+[Developer Wordpress link](https://developer.wordpress.org/block-editor/) for gutenberg blocks.
